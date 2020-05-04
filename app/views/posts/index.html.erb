@@ -1,10 +1,6 @@
-<div>
-  <h3>Filter posts:</h3>
-  <%= form_tag("/posts", method: "get") do %>
-    <%= select_tag "author", options_from_collection_for_select(Author.all, "id", "name"), include_blank: true %>
-    <%= submit_tag "Filter" %>
-  <% end %>
-</div>
+<% if !params[:author].blank? %>
+  <% @posts = Post.where(author: params[:author]) %>
+<% end %>
 
 1>Believe It Or Not I'm Blogging On Air</h1>
 
